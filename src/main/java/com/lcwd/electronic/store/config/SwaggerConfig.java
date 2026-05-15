@@ -37,19 +37,19 @@ import java.util.List;
                 description = "This is backed of electronic store developed in premium course",
                 version = "1.0V",
                 contact = @Contact(
-                        name = "Durgesh Kumar Tiwari",
-                        email = "learncodewithdurgesh@gmail.com",
-                        url = "https://learncodewithdurgesh.com"
+                        name = "Akash",
+                        email = "kushwah17akash11singh@gmail.com",
+                        url = "http://localhost:9090"
                 ),
                 license = @License(
                         name = "OPEN License",
-                        url = "https://learncodewithdurgesh.com"
+                        url = "http://localhost:9090"
                 )
         )
         ,
         externalDocs = @ExternalDocumentation(
                 description = "This is external docs",
-                url = "https://learncodewithdurgesh.com"
+                url = "http://localhost:9090/swagger-ui/index.html"
         )
 )
 public class SwaggerConfig {
@@ -75,10 +75,10 @@ public class SwaggerConfig {
 //                        .title("Electronic Store API")
 //                        .description("This is electronic store project api developed by LCWD")
 //                        .version("1.0")
-//                        .contact(new Contact().name("Durgesh").email("durgesh@gmail.com").url("durgesh.com"))
+//                        .contact(new Contact().name("Akash").email("kushwah17akash11singh@gmail.com").url("localhost:9090"))
 //                        .license(new License().name("Apache"))
 //
-//                ).externalDocs(new ExternalDocumentation().url("learncodewithdurgesh.com").description("this is external url"))
+//                ).externalDocs(new ExternalDocumentation().url("http://localhost:9090").description("this is external url"))
 //
 //                ;
 //
@@ -124,10 +124,10 @@ public class SwaggerConfig {
 //                "Electronic Store Backend : APIS ",
 //                "This is backend project created by LCWD",
 //                "1.0.0V",
-//                "https://www.learncodewithdurgesh.com",
-//                new Contact("Durgesh", "https://www.instagram.com/durgesh_k_t", "learncodewithdurgesh@gmail.com"),
+//                "http://localhost:9090",
+//                new Contact("Akash", "http://localhost:9090", "kushwah17akash11singh@gmail.com"),
 //                "License of APIS",
-//                "https://www.learncodewithdurgesh.com/about",
+//                "http://localhost:9090/about",
 //                new ArrayDeque<>()
 //        );
 //

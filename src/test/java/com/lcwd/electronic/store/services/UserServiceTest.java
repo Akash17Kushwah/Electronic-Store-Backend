@@ -52,8 +52,8 @@ public class UserServiceTest {
         role = Role.builder().roleId("abc").roleName("NORMAL").build();
 
         user = User.builder()
-                .name("Durgesh")
-                .email("durgesh@gmail.com")
+                .name("Akash")
+                .email("kushwah17akash11singh@gmail.com")
                 .about("This is testing create method")
                 .gender("Male")
                 .imageName("abc.png")
@@ -75,7 +75,7 @@ public class UserServiceTest {
         UserDto user1 = userService.createUser(mapper.map(user, UserDto.class));
 //        System.out.println(user1.getName());
         Assertions.assertNotNull(user1);
-        Assertions.assertEquals("Durgesh", user1.getName());
+        Assertions.assertEquals("Akash", user1.getName());
 
     }
 
@@ -84,7 +84,7 @@ public class UserServiceTest {
 //    public void updateUserTest() {
 //        String userId = "hosdhfosdhvo";
 //        UserDto userDto = UserDto.builder()
-//                .name("Durgesh Kumar Tiwari")
+//                .name("Akash")
 //                .about("This is updated user about details")
 //                .gender("Male")
 //                .imageName("xyz.png")
@@ -120,7 +120,7 @@ public class UserServiceTest {
     public void getAllUsersTest() {
         User user1 = User.builder()
                 .name("Ankit")
-                .email("durgesh@gmail.com")
+                .email("kushwah17akash11singh@gmail.com")
                 .about("This is testing create method")
                 .gender("Male")
                 .imageName("abc.png")
@@ -129,7 +129,7 @@ public class UserServiceTest {
                 .build();
         User user2 = User.builder()
                 .name("Uttam")
-                .email("durgesh@gmail.com")
+                .email("kushwah17akash11singh@gmail.com")
                 .about("This is testing create method")
                 .gender("Male")
                 .imageName("abc.png")
@@ -166,7 +166,7 @@ public class UserServiceTest {
     @Test
     public void getUserByEmailTest() {
 
-        String emailId = "durgesh@gmail.com";
+        String emailId = "kushwah17akash11singh@gmail.com";
         Mockito.when(userRepository.findByEmail(emailId)).thenReturn(Optional.of(user));
         UserDto userDto = userService.getUserByEmail(emailId);
         Assertions.assertNotNull(userDto);
@@ -181,7 +181,7 @@ public class UserServiceTest {
 
         User user1 = User.builder()
                 .name("Ankit Kumar")
-                .email("durgesh@gmail.com")
+                .email("kushwah17akash11singh@gmail.com")
                 .about("This is testing create method")
                 .gender("Male")
                 .imageName("abc.png")
@@ -191,7 +191,7 @@ public class UserServiceTest {
 
         User user2 = User.builder()
                 .name("Uttam Kumar")
-                .email("durgesh@gmail.com")
+                .email("kushwah17akash11singh@gmail.com")
                 .about("This is testing create method")
                 .gender("Male")
                 .imageName("abc.png")
@@ -201,7 +201,7 @@ public class UserServiceTest {
 
         User user3 = User.builder()
                 .name("Pankaj Kumar")
-                .email("durgesh@gmail.com")
+                .email("kushwah17akash11singh@gmail.com")
                 .about("This is testing create method")
                 .gender("Male")
                 .imageName("abc.png")
@@ -220,7 +220,7 @@ public class UserServiceTest {
     @Test
     public void findUserByEmailOptionalTest() {
 
-        String email = "durgeshkumar@gmail.com";
+        String email = "akashkumar@gmail.com";
 
         Mockito.when(userRepository.findByEmail(email)).thenReturn(Optional.of(user));
         Optional<User> userByEmailOptional = userService.findUserByEmailOptional(email);

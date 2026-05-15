@@ -10,6 +10,7 @@ import com.lcwd.electronic.store.dtos.JwtResponse;
 import com.lcwd.electronic.store.dtos.UserDto;
 import com.lcwd.electronic.store.entities.User;
 import com.lcwd.electronic.store.exceptions.BadApiRequestException;
+import com.lcwd.electronic.store.security.JwtCookieHelper;
 import com.lcwd.electronic.store.security.JwtHelper;
 import com.lcwd.electronic.store.services.UserService;
 
@@ -20,6 +21,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -59,6 +61,9 @@ public class AuthController {
     @Autowired
     private JwtHelper helper;
 
+    @Autowired
+    private JwtCookieHelper jwtCookieHelper;
+
     @Value("${googleClientId}")
     private String googleClientId;
     @Value("${newPassword}")
@@ -73,10 +78,24 @@ public class AuthController {
         UserDetails userDetails = userDetailsService.loadUserByUsername(request.getEmail());
         String token = this.helper.generateToken(userDetails);
         UserDto userDto = modelMapper.map(userDetails, UserDto.class);
+        return buildAuthResponse(token, userDto);
+    }
+
+    @PostMapping("/logout")
+    public ResponseEntity<Map<String, Object>> logout() {
+        return ResponseEntity.ok()
+                .header(HttpHeaders.SET_COOKIE, jwtCookieHelper.clearAuthCookie().toString())
+                .body(Map.of("message", "Logged out successfully", "success", true));
+    }
+
+    private ResponseEntity<JwtResponse> buildAuthResponse(String token, UserDto userDto) {
         JwtResponse response = JwtResponse.builder()
                 .jwtToken(token)
-                .user(userDto).build();
-        return new ResponseEntity<>(response, HttpStatus.OK);
+                .user(userDto)
+                .build();
+        return ResponseEntity.ok()
+                .header(HttpHeaders.SET_COOKIE, jwtCookieHelper.createAuthCookie(token).toString())
+                .body(response);
     }
 
     private void doAuthenticate(String email, String password) {
@@ -130,8 +149,11 @@ public class AuthController {
             //create new user
             user = this.saveUser(email, data.get("name").toString(), data.get("photoUrl").toString());
         }
-        ResponseEntity<JwtResponse> jwtResponseResponseEntity = this.login(JwtRequest.builder().email(user.getEmail()).password(newPassword).build());
-        return jwtResponseResponseEntity;
+        this.doAuthenticate(user.getEmail(), newPassword);
+        UserDetails userDetails = userDetailsService.loadUserByUsername(user.getEmail());
+        String token = this.helper.generateToken(userDetails);
+        UserDto userDto = modelMapper.map(userDetails, UserDto.class);
+        return buildAuthResponse(token, userDto);
 
 
     }

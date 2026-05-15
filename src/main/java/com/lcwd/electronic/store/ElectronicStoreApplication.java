@@ -10,14 +10,11 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-
 import java.util.Arrays;
 import java.util.Set;
 import java.util.UUID;
 
 @SpringBootApplication
-@EnableWebMvc
 public class ElectronicStoreApplication implements CommandLineRunner {
     public static void main(String[] args) {
         SpringApplication.run(ElectronicStoreApplication.class, args);
@@ -59,14 +56,14 @@ public class ElectronicStoreApplication implements CommandLineRunner {
                     .build();
 
             User normalUser = User.builder()
-                    .name("durgesh")
-                    .email("durgesh@gmail.com")
-                    .password(passwordEncoder.encode("durgesh123"))
+                    .name("Akash")
+                    .email("kushwah17akash11singh@gmail.com")
+                    .password(passwordEncoder.encode("akash123"))
                     .gender("Male")
                     .imageName("default.png")
                     .roles(Set.of(role_normal))
                     .userId(UUID.randomUUID().toString())
-                    .about("I am Normal User")
+                    .about("I am Akash")
                     .build();
 
             repository.save(role_admin);

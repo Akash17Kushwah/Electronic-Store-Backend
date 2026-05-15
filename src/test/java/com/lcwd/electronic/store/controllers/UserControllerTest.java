@@ -49,8 +49,8 @@ public class UserControllerTest {
         role = Role.builder().roleId("abc").roleName("NORMAL").build();
 
         user = User.builder()
-                .name("Durgesh")
-                .email("durgesh@gmail.com")
+                .name("Akash")
+                .email("kushwah17akash11singh@gmail.com")
                 .about("This is testing create method")
                 .gender("Male")
                 .imageName("abc.png")
@@ -120,10 +120,10 @@ public class UserControllerTest {
     @Test
     public void getAllUsersTest() throws Exception {
 
-        UserDto object1 = UserDto.builder().name("durgesh").email("duregsh@gmail.com").password("durgesh").about("Testing").build();
-        UserDto object2 = UserDto.builder().name("Amit").email("duregsh@gmail.com").password("durgesh").about("Testing").build();
-        UserDto object3 = UserDto.builder().name("Sumit").email("duregsh@gmail.com").password("durgesh").about("Testing").build();
-        UserDto object4 = UserDto.builder().name("Ankit").email("duregsh@gmail.com").password("durgesh").about("Testing").build();
+        UserDto object1 = UserDto.builder().name("Akash").email("kushwah17akash11singh@gmail.com").password("akash123").about("Testing").build();
+        UserDto object2 = UserDto.builder().name("Amit").email("amit@gmail.com").password("akash123").about("Testing").build();
+        UserDto object3 = UserDto.builder().name("Sumit").email("sumit@gmail.com").password("akash123").about("Testing").build();
+        UserDto object4 = UserDto.builder().name("Ankit").email("ankit@gmail.com").password("akash123").about("Testing").build();
         PageableResponse<UserDto> pageableResponse = new PageableResponse<>();
         pageableResponse.setContent(Arrays.asList(
                 object1, object2, object3, object4

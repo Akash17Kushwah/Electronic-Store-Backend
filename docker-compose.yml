@@ -4,7 +4,7 @@ services:
     image: mysql
     environment:
       - MYSQL_ROOT_PASSWORD=root
-      # -MYSQL_USERNAME=durgesh
+      # -MYSQL_USERNAME=akash
       #
     volumes:
       - ./data:/var/lib/mysql

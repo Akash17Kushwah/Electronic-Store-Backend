@@ -64,7 +64,7 @@ The application automatically seeds the database with the following users on sta
 | Role | Email | Password |
 | :--- | :--- | :--- |
 | **Admin** | `admin@gmail.com` | `admin123` |
-| **Normal User** | `durgesh@gmail.com` | `durgesh123` |
+| **Normal User** | `kushwah17akash11singh@gmail.com` | `akash123` |
 
 ## 📡 Key Endpoints
 

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Create Account — Electronic Store</title>
+  <link rel="stylesheet" href="/css/login.css" />
+</head>
+<body>
+  <div class="login-page">
+    <aside class="login-illustration" aria-hidden="true">
+      <svg viewBox="0 0 480 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="240" cy="380" rx="180" ry="28" fill="#E8E0D4" opacity="0.6"/>
+        <rect x="140" y="180" width="200" height="120" rx="8" fill="#fff" stroke="#ddd" stroke-width="2"/>
+        <circle cx="240" cy="140" r="50" fill="#EAB33B" opacity="0.3"/>
+        <text x="200" y="250" fill="#1a1a1a" font-size="18" font-weight="bold">Join us!</text>
+      </svg>
+    </aside>
+    <main class="login-panel">
+      <div class="login-card">
+        <h1>Create account</h1>
+        <p class="subtitle">Sign up to start shopping</p>
+        <div id="alert" class="alert" role="alert"></div>
+        <form id="registerForm" novalidate>
+          <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" placeholder="Your name" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" placeholder="Enter Email Address" required />
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" placeholder="Password" required minlength="4" />
+          </div>
+          <div class="form-group">
+            <label for="gender">Gender</label>
+            <input type="text" id="gender" placeholder="Male / Female" value="Male" />
+          </div>
+          <label class="terms">
+            <input type="checkbox" id="terms" required />
+            <span>I agree to <a href="#">terms &amp; conditions</a></span>
+          </label>
+          <button type="submit" class="btn-signin" id="submitBtn">Create account</button>
+        </form>
+        <p class="signup-footer">
+          Already have an account? <a href="/login.html">Sign in</a>
+        </p>
+      </div>
+    </main>
+  </div>
+  <script src="/js/register.js"></script>
+</body>
+</html>

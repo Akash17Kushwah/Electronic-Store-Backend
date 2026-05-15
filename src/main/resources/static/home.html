@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Home — Electronic Store</title>
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "Segoe UI", system-ui, sans-serif;
+      background: #fefbf5;
+      color: #1a1a1a;
+    }
+    .home-text {
+      text-align: center;
+    }
+    .home-text h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin: 0 0 0.5rem;
+    }
+    .home-text p {
+      margin: 0.25rem 0;
+      color: #666;
+      font-size: 1rem;
+    }
+    .logout-btn {
+      margin-top: 1.5rem;
+      padding: 0.65rem 1.25rem;
+      border: 1px solid #e8e4dc;
+      border-radius: 10px;
+      background: #fff;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+    .logout-btn:hover {
+      background: #fafafa;
+    }
+  </style>
+</head>
+<body>
+  <div class="home-text">
+    <h1>Home Page</h1>
+    <p id="loginStatus">Checking login...</p>
+    <p id="userInfo"></p>
+    <button type="button" class="logout-btn" id="logoutBtn" style="display: none;">Log out</button>
+  </div>
+  <script src="/js/auth.js"></script>
+  <script>
+    const statusEl = document.getElementById("loginStatus");
+    const userEl = document.getElementById("userInfo");
+    const logoutBtn = document.getElementById("logoutBtn");
+
+    clearLegacyTokenStorage();
+
+    fetchCurrentUser()
+      .then((user) => {
+        statusEl.textContent = "Login successful (JWT stored in HttpOnly cookie).";
+        userEl.textContent = "Signed in as: " + (user.email || user.name || "User");
+        logoutBtn.style.display = "inline-block";
+      })
+      .catch(() => {
+        window.location.href = "/login.html";
+      });
+
+    logoutBtn.addEventListener("click", () => logout());
+  </script>
+</body>
+</html>

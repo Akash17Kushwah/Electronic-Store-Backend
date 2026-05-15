@@ -59,8 +59,8 @@ public class SecurityConfig {
 //                .build();
 //
 //        UserDetails admin = User.builder()
-//                .username("Durgesh")
-//                .password(passwordEncoder().encode("durgesh"))
+//                .username("Akash")
+//                .password(passwordEncoder().encode("akash"))
 //                .roles("ADMIN")
 //                .build();
     //users create
@@ -93,6 +93,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(request ->
                         request
                                 .requestMatchers(new AntPathRequestMatcher("/auth/login")).permitAll()
+                                .requestMatchers(new AntPathRequestMatcher("/auth/logout")).permitAll()
                                 .requestMatchers(new AntPathRequestMatcher("/cloudinary/upload")).permitAll()
                                 .requestMatchers(new AntPathRequestMatcher("/auth/google")).permitAll()
                                 .requestMatchers(new AntPathRequestMatcher("/users", HttpMethod.POST.name())).permitAll()
